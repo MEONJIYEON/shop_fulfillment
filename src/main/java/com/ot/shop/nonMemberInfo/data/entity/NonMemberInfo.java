@@ -22,7 +22,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "S_NON_MEMBER_INFO")
-
 public class NonMemberInfo {
     
     @Id
