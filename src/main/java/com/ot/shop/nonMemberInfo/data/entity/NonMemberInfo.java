@@ -4,14 +4,14 @@ import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.ot.shop.product.data.entity.Product;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -28,10 +28,12 @@ import lombok.NoArgsConstructor;
 public class NonMemberInfo {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "non_member_info_seq")
-    @SequenceGenerator(name = "non_member_info_seq", sequenceName = "non_member_info_seq", allocationSize = 1)
     @Column(length = 14, nullable = false, name="orderNumber")
     private String orderNumber;
+    
+    @OneToOne
+    @JoinColumn(name = "productCode")
+    private Product Product;
     
     @Column(nullable = false)
     private String name;
