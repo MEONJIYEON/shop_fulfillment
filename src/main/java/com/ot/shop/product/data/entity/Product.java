@@ -27,7 +27,7 @@ public class Product {
 	@Column(nullable = false, unique = true)
 	private Long id;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, name="productCode")
 	private String productCode;
 	
 	public String getProductCode() {
@@ -35,13 +35,13 @@ public class Product {
 	}
 	
 	@Column(nullable = false)
-	private Long stock;
+	private Integer stock;
 	
 	@Column(nullable = false)
 	private String name;
 	
 	@Column(nullable = false)
-	private Long price;
+	private Integer price;
 	
 	@Column(nullable = false)
 	private String content;

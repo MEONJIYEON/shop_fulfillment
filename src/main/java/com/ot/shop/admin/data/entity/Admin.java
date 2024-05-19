@@ -15,7 +15,6 @@ import lombok.Data;
 @Table(name = "S_Admin")
 public class Admin {
 	@Id
-	@Column(nullable = false, unique = true)
 	private String id;
 	
 	@Column(nullable = false)

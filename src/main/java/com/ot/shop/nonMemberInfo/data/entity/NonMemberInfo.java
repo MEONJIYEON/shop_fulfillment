@@ -1,11 +1,14 @@
 package com.ot.shop.nonMemberInfo.data.entity;
 
-import java.sql.Date;
+import java.time.LocalDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -27,7 +30,7 @@ public class NonMemberInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "non_member_info_seq")
     @SequenceGenerator(name = "non_member_info_seq", sequenceName = "non_member_info_seq", allocationSize = 1)
-    @Column(length = 14, nullable = false, unique = true)
+    @Column(length = 14, nullable = false, name="orderNumber")
     private String orderNumber;
     
     @Column(nullable = false)
@@ -40,22 +43,19 @@ public class NonMemberInfo {
     private String email2;
     
     @Column(nullable = false)
-    private int hp1;
+    private String hp1;
     
     @Column(nullable = false)
-    private int hp2;
+    private String hp2;
     
     @Column(nullable = false)
-    private int hp3;
-    
-    @Column(nullable = false)
-    private Date createdDate;
+    private String hp3;
     
     @Column(nullable = false)
     private String address;
     
     @Column(nullable = false)
-    private int zipcode;
+    private String zipcode;
     
     @Column(nullable = false)
     private char aggrement1;
@@ -68,4 +68,22 @@ public class NonMemberInfo {
     
     @Column(nullable = false)
     private int orderCount;
+    
+    @Column(nullable = false)
+	private LocalDateTime create_at;
+	
+	private LocalDateTime updated_at;
+	
+	@PrePersist
+    protected void onCreate() {
+        create_at = LocalDateTime.now();
+        updated_at = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        updated_at = LocalDateTime.now();
+    }
+    
+    
 }
