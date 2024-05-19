@@ -6,7 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -31,7 +31,7 @@ public class NonMemberInfo {
     @Column(length = 14, nullable = false, name="orderNumber")
     private String orderNumber;
     
-    @OneToMany
+    @OneToOne
     @JoinColumn(name = "productCode")
     private Product Product;
     
