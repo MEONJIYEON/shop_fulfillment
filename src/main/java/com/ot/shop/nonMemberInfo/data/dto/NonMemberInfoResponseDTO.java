@@ -15,5 +15,5 @@ public class NonMemberInfoResponseDTO {
 	private String hp1;
 	private String hp2;
 	private String hp3;
-	
+
 }

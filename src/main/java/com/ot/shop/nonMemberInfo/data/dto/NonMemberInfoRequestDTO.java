@@ -10,6 +10,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class NonMemberInfoRequestDTO {
+
 	private String name;
 	private String email;
 	private String email2;
@@ -23,4 +24,5 @@ public class NonMemberInfoRequestDTO {
 	private char aggrement2;
 	private char aggrement3;
 	private int orderCount;	
+
 }
