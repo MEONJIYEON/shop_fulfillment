@@ -28,12 +28,13 @@ import lombok.NoArgsConstructor;
 public class NonMemberInfo {
     
     @Id
-    @Column(length = 14, nullable = false, name="orderNumber")
+    @Column(length = 14, nullable = false, name="ordernumber")
     private String orderNumber;
     
     @OneToOne
-    @JoinColumn(name = "productCode")
+    @JoinColumn(name = "productcode")
     private Product Product;
+    
     
     @Column(nullable = false)
     private String name;
@@ -69,14 +70,14 @@ public class NonMemberInfo {
     private char aggrement3;
     
     @Column(nullable = false)
-    private int orderCount;
+    private int ordercount;
     
     @Column(nullable = false)
-	private LocalDateTime create_at;
-	
-	private LocalDateTime updated_at;
-	
-	@PrePersist
+   private LocalDateTime create_at;
+   
+   private LocalDateTime updated_at;
+   
+   @PrePersist
     protected void onCreate() {
         create_at = LocalDateTime.now();
         updated_at = LocalDateTime.now();
