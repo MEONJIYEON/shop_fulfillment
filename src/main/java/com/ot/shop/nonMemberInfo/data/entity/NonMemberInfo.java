@@ -73,11 +73,11 @@ public class NonMemberInfo {
     private int ordercount;
     
     @Column(nullable = false)
-	private LocalDateTime create_at;
-	
-	private LocalDateTime updated_at;
-	
-	@PrePersist
+   private LocalDateTime create_at;
+   
+   private LocalDateTime updated_at;
+   
+   @PrePersist
     protected void onCreate() {
         create_at = LocalDateTime.now();
         updated_at = LocalDateTime.now();
