@@ -4,7 +4,7 @@ import com.ot.shop.admin.controller.AdminController;
 
 public class AdminControllerImpl implements AdminController {
 	
-	public String test2() {
+	public String test1234() {
 		return "Hello2";
 	}
 	public String sub1() { 
