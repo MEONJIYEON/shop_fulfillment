@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ot.shop.product.data.dao.ProductDAO;
-import com.ot.shop.product.data.dto.ProductDto;
-import com.ot.shop.product.data.dto.ProductResponseDto;
+import com.ot.shop.product.data.dto.ProductDTO;
+import com.ot.shop.product.data.dto.ProductResponseDTO;
 import com.ot.shop.product.data.entity.Product;
 import com.ot.shop.product.data.repository.ProductRepository;
 import com.ot.shop.product.service.ProductService;
@@ -31,7 +31,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 	 
 	@Override
-	public ProductResponseDto saveProduct(ProductDto productDto) {
+	public ProductResponseDTO saveProduct(ProductDTO productDto) {
 		//Product product = new Product();
 //		private String productCode;
 //		private Integer stock;
@@ -74,7 +74,7 @@ public class ProductServiceImpl implements ProductService {
 //		private LocalDateTime create_at;
 //		private LocalDateTime updated_at;
 		
-		ProductResponseDto productResponseDto = new ProductResponseDto();
+		ProductResponseDTO productResponseDto = new ProductResponseDTO();
 		productResponseDto.setId(savedProduct.getId());
 		productResponseDto.setProductCode(savedProduct.getProductCode());
 		productResponseDto.setStock(savedProduct.getStock());
@@ -87,10 +87,10 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public ProductResponseDto getProduct(Long id) {
+	public ProductResponseDTO getProduct(Long id) {
 		Product product = productDAO.selectOneProduct(id);
 		
-		ProductResponseDto productResponseDto = new ProductResponseDto();
+		ProductResponseDTO productResponseDto = new ProductResponseDTO();
 		
 		productResponseDto.setId(product.getId());
 		productResponseDto.setProductCode(product.getProductCode());
@@ -106,10 +106,10 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public ProductResponseDto updateProduct(Long id, String name, String content, String image, Integer price) throws Exception {
+	public ProductResponseDTO updateProduct(Long id, String name, String content, String image, Integer price) throws Exception {
 		Product changedProduct = productDAO.updateProduct(id, name, content, image, price);
 		
-		ProductResponseDto productResponseDto = new ProductResponseDto();
+		ProductResponseDTO productResponseDto = new ProductResponseDTO();
 		
 		productResponseDto.setId(changedProduct.getId());
 		productResponseDto.setName(changedProduct.getName());
@@ -126,13 +126,13 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<ProductResponseDto> findAllProduct() {
+	public List<ProductResponseDTO> findAllProduct() {
 		List<Product> productList = productDAO.selectAllProduct();
 		
-		List<ProductResponseDto> responseDtoList = new ArrayList<>();
+		List<ProductResponseDTO> responseDtoList = new ArrayList<>();
 
 		for (Product product : productList) {
-		        ProductResponseDto responseDto = new ProductResponseDto();
+		        ProductResponseDTO responseDto = new ProductResponseDTO();
 		        responseDto.setId(product.getId());
 		        responseDto.setProductCode(product.getProductCode());
 		        responseDto.setStock(product.getStock());
