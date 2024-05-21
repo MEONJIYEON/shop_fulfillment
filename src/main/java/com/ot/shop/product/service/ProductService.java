@@ -2,17 +2,17 @@ package com.ot.shop.product.service;
 
 import java.util.List;
 
-import com.ot.shop.product.data.dto.ProductDto;
-import com.ot.shop.product.data.dto.ProductResponseDto;
+import com.ot.shop.product.data.dto.ProductDTO;
+import com.ot.shop.product.data.dto.ProductResponseDTO;
 
 public interface ProductService {
-	ProductResponseDto saveProduct(ProductDto productDto);
+	ProductResponseDTO saveProduct(ProductDTO productDto);
 	
-	ProductResponseDto getProduct(Long id);
+	ProductResponseDTO getProduct(Long id);
 	
-	ProductResponseDto updateProduct(Long id, String name, String content, String image, Integer price) throws Exception;
+	ProductResponseDTO updateProduct(Long id, String name, String content, String image, Integer price) throws Exception;
 
 	void deleteProduct(Long id) throws Exception;
 	
-	List<ProductResponseDto> findAllProduct();
+	List<ProductResponseDTO> findAllProduct();
 }
