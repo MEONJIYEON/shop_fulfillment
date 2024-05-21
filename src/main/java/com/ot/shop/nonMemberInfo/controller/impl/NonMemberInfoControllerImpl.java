@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ot.shop.nonMemberInfo.controller.NonMemberInfoController;
-import com.ot.shop.nonMemberInfo.data.dto.NonMemberInfoCreateRequestDTO;
+import com.ot.shop.nonMemberInfo.data.dto.NonMemberInfoRequestDTO;
 import com.ot.shop.nonMemberInfo.data.dto.NonMemberInfoResponseDTO;
 import com.ot.shop.nonMemberInfo.service.NonMemberInfoService;
 
@@ -26,7 +26,7 @@ public class NonMemberInfoControllerImpl implements NonMemberInfoController {
 	
 	@Override
 	@PostMapping("/create")
-	public ResponseEntity<NonMemberInfoResponseDTO> createNonMemberInfo(@RequestBody NonMemberInfoCreateRequestDTO nonMemberInfoCreateRequestDTO){
+	public ResponseEntity<NonMemberInfoResponseDTO> createNonMemberInfo(@RequestBody NonMemberInfoRequestDTO nonMemberInfoCreateRequestDTO){
 		NonMemberInfoResponseDTO nonMemberInfoCreateResponseDTO = this.nonMemberInfoService.saveNonMemberInfo(nonMemberInfoCreateRequestDTO);
 		return ResponseEntity.status(HttpStatus.OK).body(nonMemberInfoCreateResponseDTO);
 	}

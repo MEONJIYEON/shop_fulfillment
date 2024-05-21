@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.ot.shop.admin.data.dao.AdminDAO;
 import com.ot.shop.admin.data.dto.AdminLoginRequestDTO;
 import com.ot.shop.admin.service.AdminService;
-import com.ot.shop.nonMemberInfo.data.dto.NonMemberInfoCreateRequestDTO;
+import com.ot.shop.nonMemberInfo.data.dto.NonMemberInfoRequestDTO;
 import com.ot.shop.nonMemberInfo.data.entity.NonMemberInfo;
 
 @Service
@@ -23,10 +23,10 @@ public class AdminServiceImpl implements AdminService {
 	}
 	
 	@Override
-	public List<NonMemberInfoCreateRequestDTO> findAllOrder() {
+	public List<NonMemberInfoRequestDTO> findAllOrder() {
 		List<NonMemberInfo> orderList = adminDAO.selectAllOrder();
 		
-		List<NonMemberInfoCreateRequestDTO> requestDtoList = new ArrayList<>();
+		List<NonMemberInfoRequestDTO> requestDtoList = new ArrayList<>();
 		
 		//Dto 값 설정 -> orderList
 //		public String name;
@@ -39,7 +39,7 @@ public class AdminServiceImpl implements AdminService {
 //		public Integer orderCount;
 //		public LocalDateTime create_at;
 		for(NonMemberInfo order: orderList) {
-			NonMemberInfoCreateRequestDTO requestDto = new NonMemberInfoCreateRequestDTO();
+			NonMemberInfoRequestDTO requestDto = new NonMemberInfoRequestDTO();
 //			requestDto.setName(order.getName());
 //			requestDto.setHp1(order.getHp1());
 //			requestDto.setHp2(order.getHp2());

@@ -1,20 +1,20 @@
-package com.ot.shop.nonMemberInfo.data.dto;
+package com.ot.shop.product.data.dto;
 
-import javax.persistence.Column;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
-public class NonMemberInfoReadResponseDto {
+public class UpdateProductDTO {
+	private Long id;
 	private String name;
-	
+	private String content;
+	private String image;
 	private Integer price;
 	
-	private Integer stock;
 }

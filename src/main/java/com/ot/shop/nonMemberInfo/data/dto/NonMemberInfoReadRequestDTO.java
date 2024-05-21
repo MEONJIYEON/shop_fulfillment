@@ -11,7 +11,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class NonMemberInfoReadRequestDto {
+public class NonMemberInfoReadRequestDTO {
 	private String orderNumber;
 	
 	private String name;

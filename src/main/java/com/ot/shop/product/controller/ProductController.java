@@ -5,18 +5,18 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import com.ot.shop.product.data.dto.ProductDto;
-import com.ot.shop.product.data.dto.ProductResponseDto;
-import com.ot.shop.product.data.dto.UpdateProductDto;
+import com.ot.shop.product.data.dto.ProductDTO;
+import com.ot.shop.product.data.dto.ProductResponseDTO;
+import com.ot.shop.product.data.dto.UpdateProductDTO;
 
 public interface ProductController {
-	ResponseEntity<ProductResponseDto> createProduct(@RequestBody ProductDto productDto);
+	ResponseEntity<ProductResponseDTO> createProduct(@RequestBody ProductDTO productDto);
 	
-	ResponseEntity<ProductResponseDto> getProduct(Long id);
+	ResponseEntity<ProductResponseDTO> getProduct(Long id);
 	
-	ResponseEntity<ProductResponseDto> updateProduct(@RequestBody UpdateProductDto updateProductDto) throws Exception;
+	ResponseEntity<ProductResponseDTO> updateProduct(@RequestBody UpdateProductDTO updateProductDto) throws Exception;
 
 	ResponseEntity<String> deleteProduct(Long id) throws Exception;
 	
-	ResponseEntity<List<ProductResponseDto>> getAllProducts();
+	ResponseEntity<List<ProductResponseDTO>> getAllProducts();
 }
