@@ -1,5 +1,7 @@
 package com.ot.shop.nonMemberInfo.data.dto;
 
+import com.ot.shop.product.data.entity.Product;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,8 +11,11 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class NonMemberInfoRequestDTO {
+public class NonMemberInfoCreateRequestDTO {
 
+	private String orderNumber;
+	
+	private Product Product;
 	private String name;
 	private String email;
 	private String email2;
