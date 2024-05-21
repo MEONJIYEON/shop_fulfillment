@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ot.shop.admin.controller.AdminController;
 import com.ot.shop.admin.data.dto.AdminLoginRequestDTO;
 import com.ot.shop.admin.service.AdminService;
-import com.ot.shop.nonMemberInfo.data.dto.NonMemberInfoRequestDTO;
+import com.ot.shop.nonMemberInfo.data.dto.NonMemberInfoCreateRequestDTO;
 
 @RestController
 @RequestMapping("/api/v1/shop-fulfillment")
@@ -27,8 +27,8 @@ public class AdminControllerImpl implements AdminController {
 	}
 	
 	@GetMapping("/getAllOrders()")
-	public ResponseEntity<List<NonMemberInfoRequestDTO>> getAllOrders() {
-		List<NonMemberInfoRequestDTO> orders = adminService.findAllOrder();
+	public ResponseEntity<List<NonMemberInfoCreateRequestDTO>> getAllOrders() {
+		List<NonMemberInfoCreateRequestDTO> orders = adminService.findAllOrder();
 		
 		return ResponseEntity.status(HttpStatus.OK).body(orders);
 	}

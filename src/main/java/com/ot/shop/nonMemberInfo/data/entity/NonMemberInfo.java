@@ -32,9 +32,8 @@ public class NonMemberInfo {
     private String orderNumber;
     
     @OneToOne
-    @JoinColumn(name = "productcode")
+    @JoinColumn(name = "productcode", referencedColumnName = "productcode")
     private Product Product;
-    
     
     @Column(nullable = false)
     private String name;
