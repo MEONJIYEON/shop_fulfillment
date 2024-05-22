@@ -10,15 +10,21 @@ import com.ot.shop.product.data.dto.ProductResponseDTO;
 import com.ot.shop.product.data.dto.UpdateProductDTO;
 
 public interface ProductController {
+
 	public ModelAndView createProduct(@ModelAttribute ProductDTO productDto);
+
+	//ResponseEntity<ProductResponseDTO> createProduct(@RequestBody ProductDTO productDto);
 	
 	ResponseEntity<ProductResponseDTO> getProduct(Long id);
 	
 	ResponseEntity<ProductResponseDTO> updateProduct(@RequestBody UpdateProductDTO updateProductDto) throws Exception;
 
 	ResponseEntity<String> deleteProduct(Long id) throws Exception;
-	
+
 	//ResponseEntity<List<ProductResponseDTO>> getAllProducts();
 	
 	public ModelAndView getAllProducts();
+
+	//ResponseEntity<List<ProductResponseDTO>> getAllProducts();
+
 }

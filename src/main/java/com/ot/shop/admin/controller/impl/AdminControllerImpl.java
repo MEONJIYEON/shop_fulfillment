@@ -18,7 +18,6 @@ import com.ot.shop.admin.service.AdminService;
 import com.ot.shop.product.data.dto.ProductResponseDTO;
 import com.ot.shop.product.service.ProductService;
 
-
 @RestController
 @RequestMapping("/api/v1/shop-fulfillment")
 public class AdminControllerImpl implements AdminController {
@@ -29,6 +28,7 @@ public class AdminControllerImpl implements AdminController {
 	@Autowired
 	public AdminControllerImpl(AdminService adminService, ProductService productService) {
 		this.adminService = adminService;
+
 		this.productService = productService;
 	}
 

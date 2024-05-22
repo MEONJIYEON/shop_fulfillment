@@ -10,7 +10,6 @@ import com.ot.shop.admin.data.dao.AdminDAO;
 import com.ot.shop.admin.data.dto.AdminLoginRequestDTO;
 import com.ot.shop.admin.data.dto.NonMemberOrderRequestDTO;
 import com.ot.shop.admin.service.AdminService;
-import com.ot.shop.nonMemberInfo.data.dto.NonMemberInfoCreateRequestDTO;
 import com.ot.shop.nonMemberInfo.data.entity.NonMemberInfo;
 
 @Service
@@ -22,7 +21,7 @@ public class AdminServiceImpl implements AdminService {
 	public AdminServiceImpl(AdminDAO adminDAO) {
 		this.adminDAO = adminDAO;
 	}
-	
+
 	public List<NonMemberOrderRequestDTO> findAllOrder() {
 		List<NonMemberInfo> orderList = adminDAO.selectAllOrder();
 		
@@ -37,10 +36,7 @@ public class AdminServiceImpl implements AdminService {
 //		
 //		private LocalDateTime create_at;
 
-		
 		for(NonMemberInfo order: orderList) {
-
-			NonMemberInfoCreateRequestDTO requestDto = new NonMemberInfoCreateRequestDTO();
 //			requestDto.setName(order.getName());
 //			requestDto.setHp1(order.getHp1());
 //			requestDto.setHp2(order.getHp2());

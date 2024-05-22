@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ot.shop.nonMemberInfo.data.dao.NonMemberInfoDAO;
-import com.ot.shop.nonMemberInfo.data.dto.NonMemberInfoCreateRequestDTO;
-import com.ot.shop.nonMemberInfo.data.dto.NonMemberInfoReadRequestDto;
+import com.ot.shop.nonMemberInfo.data.dto.NonMemberInfoRequestDTO;
+import com.ot.shop.nonMemberInfo.data.dto.NonMemberInfoReadRequestDTO;
 import com.ot.shop.nonMemberInfo.data.dto.NonMemberInfoResponseDTO;
 import com.ot.shop.nonMemberInfo.data.entity.NonMemberInfo;
 import com.ot.shop.nonMemberInfo.service.NonMemberInfoService;
@@ -24,7 +24,7 @@ public class NonMemberInfoServiceImpl implements NonMemberInfoService {
 	}
 
 	@Override
-	public NonMemberInfoResponseDTO saveNonMemberInfo(NonMemberInfoCreateRequestDTO nonMemberInfo) {
+	public NonMemberInfoResponseDTO saveNonMemberInfo(NonMemberInfoRequestDTO nonMemberInfo) {
 		//		Product product = Product.builder()
 		//						 .name(nonMemberInfo.getProduct().getName())
 		//						 .stock(nonMemberInfo.getProduct().getStock())

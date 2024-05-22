@@ -48,6 +48,14 @@ public class ProductControllerImpl implements ProductController {
         return mav;
     }
 
+//	@PostMapping()
+//	public ResponseEntity<ProductResponseDTO> createProduct(@RequestBody ProductDTO productDto) {
+//		ProductResponseDTO productResponseDto = productService.saveProduct(productDto);
+//		
+//		return ResponseEntity.status(HttpStatus.OK).body(productResponseDto);
+//	}
+
+
 	@GetMapping()
 	public ResponseEntity<ProductResponseDTO> getProduct(Long id) {
 		ProductResponseDTO productResponseDto = productService.getProduct(id);

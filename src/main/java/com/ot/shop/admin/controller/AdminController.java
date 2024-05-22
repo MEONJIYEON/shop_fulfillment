@@ -12,7 +12,7 @@ public interface AdminController {
 	public ModelAndView loginCheck(@RequestParam String id);
 
 	public ModelAndView createProduct();
-	
+
 	public ModelAndView selectAllProduct();
 	
 	public ModelAndView index();
