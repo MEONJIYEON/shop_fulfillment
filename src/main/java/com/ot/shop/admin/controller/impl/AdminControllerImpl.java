@@ -17,20 +17,19 @@ import com.ot.shop.admin.service.AdminService;
 import com.ot.shop.product.data.dto.ProductResponseDTO;
 import com.ot.shop.product.service.ProductService;
 
-
 @RestController
 @RequestMapping("/api/v1/shop-fulfillment")
 public class AdminControllerImpl implements AdminController {
 
 	private final AdminService adminService;
 	private final ProductService productService;
-	
+
 	@Autowired
 	public AdminControllerImpl(AdminService adminService, ProductService productService) {
 		this.adminService = adminService;
 		this.productService = productService;
 	}
-	
+
 //	@GetMapping("/getAllOrders()")
 //	public ResponseEntity<List<NonMemberInfoCreateRequestDTO>> getAllOrders() {
 //		List<NonMemberInfoCreateRequestDTO> orders = adminService.findAllOrder();
@@ -38,58 +37,53 @@ public class AdminControllerImpl implements AdminController {
 //		return ResponseEntity.status(HttpStatus.OK).body(orders);
 //	}
 
-//	@GetMapping("/getAllOrders")
-//	public ResponseEntity<List<NonMemberOrderRequestDTO>> getAllOrders() {
-//		List<NonMemberOrderRequestDTO> orders = adminService.findAllOrder();
-//		
-//		return ResponseEntity.status(HttpStatus.OK).body(orders);
-//	}
-	
-	@GetMapping("/selectAllOrders")
-    public ModelAndView selectAllOrders() {
-        List<NonMemberOrderRequestDTO> orders = adminService.findAllOrder();
-        
-        ModelAndView mav = new ModelAndView("selectAllOrder");
-        mav.addObject("orders", orders);
-        
-        return mav;
+	@GetMapping("/selectAllOrder")
+	public ModelAndView selectAllOrder() {
+		List<NonMemberOrderRequestDTO> orders = adminService.findAllOrder();
 
-    }
+		ModelAndView mav = new ModelAndView("selectAllOrder");
+		mav.addObject("orders", orders);
 
-	 @GetMapping("/login")
-	    public ModelAndView showLoginPage() {
-		 ModelAndView mav = new ModelAndView("login");
-		 return mav;  
-	 }
-	 
+		return mav;
+
+	}
+
+	@GetMapping("/login")
+	public ModelAndView showLoginPage() {
+		ModelAndView mav = new ModelAndView("login");
+		return mav;
+	}
+
 	@PostMapping("/loginCheck")
 	public ModelAndView loginCheck(@RequestParam(value = "id", required = false, defaultValue = "") String id) {
-	    ModelAndView mav = new ModelAndView();
-	    
-	    AdminLoginRequestDTO loginResult = adminService.login(id);
-	    
-	    if (loginResult.getId() != null) {
-	        //login success
-	        System.out.println(" success loginResult : " + loginResult);
-	        mav.addObject("loginResult", loginResult);
-	        mav.setViewName("index");
-	    } else {
-	        //login fail
-	        System.out.println("fail loginResult : " + loginResult);
-	        mav.setViewName("fail");
-	    }
-	    
-	    return mav;
+		ModelAndView mav = new ModelAndView();
+
+		AdminLoginRequestDTO loginResult = adminService.login(id);
+
+		if (loginResult.getId() != null) {
+			List<NonMemberOrderRequestDTO> orders = adminService.findAllOrder();
+			List<ProductResponseDTO> products = productService.findAllProduct();
+			// login success
+			System.out.println(" success loginResult : " + loginResult);
+			mav.addObject("loginResult", loginResult);
+			mav.addObject("orders", orders);
+			mav.addObject("products", products);
+			mav.setViewName("index");
+		} else {
+			// login fail
+			System.out.println("fail loginResult : " + loginResult);
+			mav.setViewName("fail");
+		}
+
+		return mav;
 	}
-	
+
 	@GetMapping("/createProduct")
 	public ModelAndView createProduct() {
 		ModelAndView mav = new ModelAndView("createProduct");
 		return mav;
 	}
-	
-	
-	
+
 //	@GetMapping("/getAllProducts")
 //	public ModelAndView getAllProducts() {
 //	    List<ProductResponseDTO> products = productService.findAllProduct();
@@ -100,25 +94,38 @@ public class AdminControllerImpl implements AdminController {
 //	    
 //	    return mav;
 //	}
-	
+
 	@GetMapping("/selectAllProduct")
 	public ModelAndView selectAllProduct() {
 		List<ProductResponseDTO> products = productService.findAllProduct();
 
-		
 		ModelAndView mav = new ModelAndView("selectAllProduct");
 		mav.addObject("products", products);
 		return mav;
 	}
+	
+	@GetMapping("/updateProduct")
+	public ModelAndView updateProduct() {
+		List<ProductResponseDTO> products = productService.findAllProduct();
+
+		
+		System.out.println(products.get(0));
+		ModelAndView mav = new ModelAndView("updateProduct");
+		mav.addObject("products", products);
+		return mav;
+	}
+	
 
 	@GetMapping("/index")
 	public ModelAndView index() {
+		List<NonMemberOrderRequestDTO> orders = adminService.findAllOrder();
+		List<ProductResponseDTO> products = productService.findAllProduct();
+
+
 		ModelAndView mav = new ModelAndView("index");
+		mav.addObject("orders", orders);
+		mav.addObject("products", products);
 		return mav;
 	}
-
-	
-
-	
 
 }

@@ -11,7 +11,7 @@ public interface ProductDAO {
 	Product selectOneProduct(Long id);
 	
 	//상품명, 상품 내용, 상품 이미지, 상품 가격
-	Product updateProduct(Long id, String name, String content, String image, Integer price) throws Exception;
+	Product updateProduct(Long id, String name, String content, Integer stock, String image, Integer price) throws Exception;
 	
 	void deleteProduct(Long id) throws Exception;
 	

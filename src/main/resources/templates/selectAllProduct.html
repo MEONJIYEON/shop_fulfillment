@@ -88,7 +88,7 @@ a {
 <body class="sb-nav-fixed">
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 		<!-- Navbar Brand-->
-		<a class="navbar-brand ps-3" href="index.html">Start Bootstrap</a>
+		<a class="navbar-brand ps-3" th:href="@{/api/v1/shop-fulfillment/index}">ShoppingMall</a>
 		<!-- Sidebar Toggle-->
 		<button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0"
 			id="sidebarToggle" href="#!">
@@ -130,7 +130,7 @@ a {
 						<a class="nav-link" href="/api/v1/shop-fulfillment/index">
 							<div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div> Dashboard
 						</a>
-						<div class="sb-sidenav-menu-heading">Interface</div>
+						<div class="sb-sidenav-menu-heading">Management</div>
 						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
 							data-bs-target="#collapseLayouts" aria-expanded="false"
 							aria-controls="collapseLayouts">
@@ -148,7 +148,8 @@ a {
 								<a class="nav-link" th:href="@{/api/v1/shop-fulfillment/createProduct}">상품 등록</a>
 							</nav>
 						</div>
-						<a class="nav-link" href="/api/v1/shop-fulfillment/index">
+						<a class="nav-link"
+							th:href="@{/api/v1/shop-fulfillment/selectAllOrder}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                                 주문 관리
                         </a>
@@ -174,6 +175,7 @@ a {
 								<th>상품가격</th>
 								<th>상품 재고</th>
 								<th>상품 등록 시간</th>
+								<th>수정 / 삭제 </th>
 							</tr>
 						</thead>
 						<tbody>
@@ -181,9 +183,19 @@ a {
 								<td th:text="${product.productCode}"></td>
 								<td th:text="${product.image}"></td>
 								<td th:text="${product.name}"></td>
-								<td th:text="${product.price}"></td>
+								<td th:text="${#numbers.formatInteger(product.price, 3, 'COMMA')}"></td>
 								<td th:text="${product.stock}"></td>
-								<td th:text="${product.create_at}"></td>
+								<td th:text="${#temporals.format(product.create_at, 'yyyy.MM.dd HH:mm')}"></td>
+								<td colspan="2">
+									<div class="button-container">
+										<button class="btn btn btn-light" type="button" style="padding: 10px 20px;">
+										<a class="nav-link"  th:href="@{/api/v1/shop-fulfillment/getProduct(id=${product.id})}">수정</a></button>
+										
+										<form th:action="@{/api/v1/shop-fulfillment/deleteProduct(id=${product.id})}" method="post">
+											<button class="btn btn btn-light" style="padding: 10px 20px;">삭제</button>	
+										</form>
+									</div>
+								</td>
 							</tr>
 						</tbody>
 					</table>

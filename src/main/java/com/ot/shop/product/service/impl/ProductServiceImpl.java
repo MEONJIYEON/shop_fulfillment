@@ -102,13 +102,13 @@ public class ProductServiceImpl implements ProductService {
 		productResponseDto.setCreate_at(product.getCreate_at());
 		productResponseDto.setUpdated_at(product.getUpdated_at());
 		
+		System.out.println(productResponseDto);
 		return productResponseDto;
 	}
 
 	@Override
-	public ProductResponseDTO updateProduct(Long id, String name, String content, String image, Integer price) throws Exception {
-		Product changedProduct = productDAO.updateProduct(id, name, content, image, price);
-		
+	public ProductResponseDTO updateProduct(Long id, String name, String content,Integer stock, String image, Integer price) throws Exception {
+		Product changedProduct = productDAO.updateProduct(id, name, content, stock, image, price);
 		ProductResponseDTO productResponseDto = new ProductResponseDTO();
 		
 		productResponseDto.setId(changedProduct.getId());
@@ -117,6 +117,7 @@ public class ProductServiceImpl implements ProductService {
 		productResponseDto.setImage(changedProduct.getImage());
 		productResponseDto.setPrice(changedProduct.getPrice());
 		
+		System.out.println("updateProduct :" + productResponseDto);
 		return productResponseDto;
 	}
 

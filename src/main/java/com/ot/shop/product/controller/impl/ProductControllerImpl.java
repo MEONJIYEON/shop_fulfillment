@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -56,30 +57,64 @@ public class ProductControllerImpl implements ProductController {
 //	}
 
 
-	@GetMapping()
-	public ResponseEntity<ProductResponseDTO> getProduct(Long id) {
+//	@GetMapping()
+//	public ResponseEntity<ProductResponseDTO> getProduct(Long id) {
+//		ProductResponseDTO productResponseDto = productService.getProduct(id);
+//		
+//		return ResponseEntity.status(HttpStatus.OK).body(productResponseDto);
+//	}
+	
+	@GetMapping("/getProduct")
+	public ModelAndView getProduct(@RequestParam Long id) {
+		System.out.println(id);
 		ProductResponseDTO productResponseDto = productService.getProduct(id);
+		System.out.println(productResponseDto);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("productResponseDto", productResponseDto);
+		mav.setViewName("updateProduct");
 		
-		return ResponseEntity.status(HttpStatus.OK).body(productResponseDto);
+		return mav;
 	}
 
-	@PutMapping()
-	public ResponseEntity<ProductResponseDTO> updateProduct(UpdateProductDTO updateProductDto) throws Exception{
+//	@PutMapping()
+//	public ResponseEntity<ProductResponseDTO> updateProduct(UpdateProductDTO updateProductDto) throws Exception{
+//		//Long id ,String name, Integer price, String content, String image
+//		//Long id, String name, String content, String image, Integer price
+//		
+//		ProductResponseDTO productResponseDto = productService.updateProduct(
+//				updateProductDto.getId(), updateProductDto.getName(),
+//				updateProductDto.getContent(), updateProductDto.getImage(), updateProductDto.getPrice());
+//		
+//		return ResponseEntity.status(HttpStatus.OK).body(productResponseDto);
+//	}
+	
+	@PostMapping("/updateProduct")
+	public ModelAndView updateProduct(@ModelAttribute UpdateProductDTO updateProductDto) throws Exception{
 		//Long id ,String name, Integer price, String content, String image
 		//Long id, String name, String content, String image, Integer price
-		
+		//Long id, String name, String content,Integer stock, String image, Integer price
+		System.out.println(updateProductDto);
 		ProductResponseDTO productResponseDto = productService.updateProduct(
 				updateProductDto.getId(), updateProductDto.getName(),
-				updateProductDto.getContent(), updateProductDto.getImage(), updateProductDto.getPrice());
+				updateProductDto.getContent(), updateProductDto.getStock(),
+				updateProductDto.getImage(), updateProductDto.getPrice());
 		
-		return ResponseEntity.status(HttpStatus.OK).body(productResponseDto);
+		System.out.println("=====" + productResponseDto);
+		 ModelAndView mav = new ModelAndView();
+	     mav.addObject("productResponseDto", productResponseDto);
+	     mav.setViewName("redirect:/api/v1/shop-fulfillment/selectAllProduct");
+		
+	     return mav;
 	}
 
-	@DeleteMapping()
-	public ResponseEntity<String> deleteProduct(Long id) throws Exception {
+	@PostMapping("/deleteProduct")
+	public ModelAndView deleteProduct(Long id) throws Exception {
 		productService.deleteProduct(id);
 		
-		return ResponseEntity.status(HttpStatus.OK).body("delete");
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("redirect:/api/v1/shop-fulfillment/selectAllProduct");
+		
+		return mav;
 	}
 
 	//전체 List 가져오기
