@@ -14,6 +14,7 @@ public class UpdateProductDTO {
 	private Long id;
 	private String name;
 	private String content;
+	private Integer stock;
 	private String image;
 	private Integer price;
 	

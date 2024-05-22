@@ -32,17 +32,20 @@ public class ProductDAOImpl implements ProductDAO {
 	}
 
 	@Override
-	public Product updateProduct(Long id, String name, String content, String image, Integer price) throws Exception {
+	public Product updateProduct(Long id, String name, String content,Integer stock, String image, Integer price) throws Exception {
 		Optional<Product> selectedProduct = productRepository.findById(id);
 		
 		Product updatedProduct;
 		
 		if(selectedProduct.isPresent()) {
 			Product product = selectedProduct.get();
-		
+			System.out.println("---"  + product);
+			product.setId(id);
 			product.setName(name);
 			product.setContent(content);
+			product.setStock(stock);
 			product.setImage(image);
+			product.setPrice(price);
 			product.setUpdated_at(LocalDateTime.now());
 			
 			updatedProduct = productRepository.save(product);

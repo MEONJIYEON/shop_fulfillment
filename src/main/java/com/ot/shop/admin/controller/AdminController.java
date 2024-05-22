@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 public interface AdminController {
-	public ModelAndView selectAllOrders();
+	public ModelAndView selectAllOrder();
 
 	public ModelAndView showLoginPage();
 
@@ -14,5 +14,7 @@ public interface AdminController {
 
 	public ModelAndView selectAllProduct();
 
+	public ModelAndView updateProduct();
+	
 	public ModelAndView index();
 }
