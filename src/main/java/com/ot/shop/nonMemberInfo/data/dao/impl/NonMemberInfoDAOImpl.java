@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.ot.shop.nonMemberInfo.data.dao.NonMemberInfoDAO;
-import com.ot.shop.nonMemberInfo.data.dto.NonMemberInfoRequestDTO;
+import com.ot.shop.nonMemberInfo.data.dto.NonMemberInfoCreateRequestDTO;
 import com.ot.shop.nonMemberInfo.data.dto.NonMemberInfoReadRequestDTO;
 import com.ot.shop.nonMemberInfo.data.entity.NonMemberInfo;
 import com.ot.shop.nonMemberInfo.data.repository.NonMemberInfoRepository;
