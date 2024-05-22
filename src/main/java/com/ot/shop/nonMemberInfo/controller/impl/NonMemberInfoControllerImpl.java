@@ -31,6 +31,7 @@ public class NonMemberInfoControllerImpl implements NonMemberInfoController {
 	@PostMapping("/create")
 	public ResponseEntity<NonMemberInfoCreateResponseDTO> createNonMemberInfo(@RequestBody NonMemberInfoCreateRequestDTO nonMemberInfoCreateRequestDTO, String productCode){
 		NonMemberInfoCreateResponseDTO nonMemberInfoCreateResponseDTO = nonMemberInfoService.saveNonMemberInfo(nonMemberInfoCreateRequestDTO, productCode);
+
 		return ResponseEntity.status(HttpStatus.OK).body(nonMemberInfoCreateResponseDTO);
 	}
 
