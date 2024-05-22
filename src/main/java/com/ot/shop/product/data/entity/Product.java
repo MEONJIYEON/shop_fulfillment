@@ -1,10 +1,10 @@
 package com.ot.shop.product.data.entity;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,6 +12,8 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,8 +26,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "S_Product")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @SequenceGenerator(name = "product_seq", sequenceName = "product_seq", allocationSize = 1)
-public class Product {
+public class Product implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "product_seq")
@@ -41,7 +44,7 @@ public class Product {
 	
 	public void setProductCode(String productCode) {
 		System.out.println("====>Product id: " + id);  
-		this.productCode = "MON-" + this.id;
+		this.productCode = "MON-" + id;
 		System.out.println("===>Product : " +this.getProductCode());    
 	}
 	

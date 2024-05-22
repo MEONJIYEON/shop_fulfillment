@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.ot.shop.admin.data.dao.AdminDAO;
 import com.ot.shop.admin.data.dto.AdminLoginRequestDTO;
+import com.ot.shop.admin.data.dto.NonMemberOrderRequestDTO;
 import com.ot.shop.admin.service.AdminService;
-import com.ot.shop.nonMemberInfo.data.dto.NonMemberInfoRequestDTO;
 import com.ot.shop.nonMemberInfo.data.entity.NonMemberInfo;
 
 @Service
@@ -21,25 +21,22 @@ public class AdminServiceImpl implements AdminService {
 	public AdminServiceImpl(AdminDAO adminDAO) {
 		this.adminDAO = adminDAO;
 	}
-	
-	@Override
-	public List<NonMemberInfoRequestDTO> findAllOrder() {
+
+	public List<NonMemberOrderRequestDTO> findAllOrder() {
 		List<NonMemberInfo> orderList = adminDAO.selectAllOrder();
 		
-		List<NonMemberInfoRequestDTO> requestDtoList = new ArrayList<>();
+		List<NonMemberOrderRequestDTO> requestDtoList = new ArrayList<>();
 		
-		//Dto 값 설정 -> orderList
-//		public String name;
-//		public String hp1;
-//		public String hp2;
-//		public String hp3;
-//		public String zipcode;
-//		public String productCode; //product -> getcode()
-//		public String productName; //product -> getName()
-//		public Integer orderCount;
-//		public LocalDateTime create_at;
+//		private String name;
+//		private String zipcode;
+//		private String orderNumber;
+//		private String productName; // 상품 이름 - product.getName()
+//		private String price; // 상품 가격 - product.getPrice()
+//		//배송상태
+//		
+//		private LocalDateTime create_at;
+
 		for(NonMemberInfo order: orderList) {
-			NonMemberInfoRequestDTO requestDto = new NonMemberInfoRequestDTO();
 //			requestDto.setName(order.getName());
 //			requestDto.setHp1(order.getHp1());
 //			requestDto.setHp2(order.getHp2());
@@ -49,8 +46,17 @@ public class AdminServiceImpl implements AdminService {
 //			requestDto.setProductName(order.getProduct().getName());
 //			requestDto.setOrderCount(order.getOrdercount());
 //			requestDto.setCreate_at(order.getCreate_at());
+
+			NonMemberOrderRequestDTO orderRequestDto = new NonMemberOrderRequestDTO();
+			orderRequestDto.setName(order.getName());
+			orderRequestDto.setZipcode(order.getZipcode());
+			orderRequestDto.setOrderNumber(order.getOrderNumber());
+			orderRequestDto.setProductName(order.getProduct().getName());
+			orderRequestDto.setPrice(order.getProduct().getPrice());
+			orderRequestDto.setCreate_at(order.getCreate_at());
+
 			
-			requestDtoList.add(requestDto);
+			requestDtoList.add(orderRequestDto);
 		}
 		
 		return requestDtoList;

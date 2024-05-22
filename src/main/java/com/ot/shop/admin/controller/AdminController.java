@@ -1,15 +1,19 @@
 package com.ot.shop.admin.controller;
 
-import java.util.List;
-
-import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
-import com.ot.shop.nonMemberInfo.data.dto.NonMemberInfoRequestDTO;
 
 public interface AdminController {
-	ResponseEntity<List<NonMemberInfoRequestDTO>> getAllOrders();
+	public ModelAndView selectAllOrders();
+
+	public ModelAndView showLoginPage();
+
+	public ModelAndView loginCheck(@RequestParam String id);
+
+	public ModelAndView createProduct();
+
+	public ModelAndView selectAllProduct();
 	
-	public String login(@RequestParam String id, Model model);
+	public ModelAndView index();
 }
