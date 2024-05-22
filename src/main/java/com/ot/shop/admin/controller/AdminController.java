@@ -3,7 +3,6 @@ package com.ot.shop.admin.controller;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-
 public interface AdminController {
 	public ModelAndView selectAllOrders();
 
@@ -14,6 +13,6 @@ public interface AdminController {
 	public ModelAndView createProduct();
 
 	public ModelAndView selectAllProduct();
-	
+
 	public ModelAndView index();
 }
