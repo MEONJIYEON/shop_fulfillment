@@ -1,14 +1,14 @@
 package com.ot.shop.nonMemberInfo.data.dao;
 
-import com.ot.shop.nonMemberInfo.data.dto.NonMemberInfoReadRequestDTO;
+import java.util.List;
+
 import com.ot.shop.nonMemberInfo.data.entity.NonMemberInfo;
-import com.ot.shop.product.data.entity.Product;
 
 public interface NonMemberInfoDAO {
 	
-	NonMemberInfo insertNonMemberInfo(NonMemberInfo nonmemberinfo);
+	NonMemberInfo insertNonMemberInfo(NonMemberInfo nonmemberinfo, String productCode);
 	
-//	NonMemberInfo selectNonMemberInfo(NonMemberInfoReadRequestDto nonMemberInfoReadRequestDto);
+	NonMemberInfo readNonMemberInfo(String orderNumber, String name);
 
 	
 	

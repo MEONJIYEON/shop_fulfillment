@@ -2,10 +2,11 @@ package com.ot.shop.nonMemberInfo.service;
 
 import com.ot.shop.nonMemberInfo.data.dto.NonMemberInfoCreateRequestDTO;
 import com.ot.shop.nonMemberInfo.data.dto.NonMemberInfoReadRequestDTO;
-import com.ot.shop.nonMemberInfo.data.dto.NonMemberInfoResponseDTO;
+import com.ot.shop.nonMemberInfo.data.dto.NonMemberInfoReadResponseDTO;
+import com.ot.shop.nonMemberInfo.data.dto.NonMemberInfoCreateResponseDTO;
 
 public interface NonMemberInfoService {
-	NonMemberInfoResponseDTO saveNonMemberInfo(NonMemberInfoCreateRequestDTO nonMemberInfo);
+	NonMemberInfoCreateResponseDTO saveNonMemberInfo(NonMemberInfoCreateRequestDTO nonMemberInfo, String productCode);
 		
-//	NonMemberInfoResponseDTO readNonMemberInfo(NonMemberInfoReadRequestDto nonMemberInfoReadRequestDto);
+	NonMemberInfoReadResponseDTO selectNonMemberInfo(NonMemberInfoReadRequestDTO nonMemberInfoReadRequestDTO);
 }

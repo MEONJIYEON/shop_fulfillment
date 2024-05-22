@@ -33,7 +33,7 @@ public class NonMemberInfo {
     
     @OneToOne
     @JoinColumn(name = "productcode", referencedColumnName = "productcode")
-    private Product Product;
+    private Product product;
     
     @Column(nullable = false)
     private String name;
