@@ -14,9 +14,9 @@ import com.ot.shop.admin.controller.AdminController;
 import com.ot.shop.admin.data.dto.AdminLoginRequestDTO;
 import com.ot.shop.admin.data.dto.NonMemberOrderRequestDTO;
 import com.ot.shop.admin.service.AdminService;
-
 import com.ot.shop.product.data.dto.ProductResponseDTO;
 import com.ot.shop.product.service.ProductService;
+
 
 @RestController
 @RequestMapping("/api/v1/shop-fulfillment")
@@ -28,9 +28,15 @@ public class AdminControllerImpl implements AdminController {
 	@Autowired
 	public AdminControllerImpl(AdminService adminService, ProductService productService) {
 		this.adminService = adminService;
-
 		this.productService = productService;
 	}
+	
+//	@GetMapping("/getAllOrders()")
+//	public ResponseEntity<List<NonMemberInfoCreateRequestDTO>> getAllOrders() {
+//		List<NonMemberInfoCreateRequestDTO> orders = adminService.findAllOrder();
+//		
+//		return ResponseEntity.status(HttpStatus.OK).body(orders);
+//	}
 
 //	@GetMapping("/getAllOrders")
 //	public ResponseEntity<List<NonMemberOrderRequestDTO>> getAllOrders() {
