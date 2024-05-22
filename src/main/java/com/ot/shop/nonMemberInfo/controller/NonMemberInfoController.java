@@ -1,12 +1,13 @@
 package com.ot.shop.nonMemberInfo.controller;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import com.ot.shop.nonMemberInfo.data.dto.NonMemberInfoCreateRequestDTO;
-import com.ot.shop.nonMemberInfo.data.dto.NonMemberInfoResponseDTO;
+import com.ot.shop.nonMemberInfo.data.dto.NonMemberInfoCreateResponseDTO;
+import com.ot.shop.nonMemberInfo.data.dto.NonMemberInfoReadRequestDTO;
+import com.ot.shop.nonMemberInfo.data.dto.NonMemberInfoReadResponseDTO;
 
 public interface NonMemberInfoController {
-	ResponseEntity<NonMemberInfoResponseDTO> createNonMemberInfo(NonMemberInfoCreateRequestDTO nonMemberInfoCreateRequestDTO);
-	
+	ResponseEntity<NonMemberInfoCreateResponseDTO> createNonMemberInfo(NonMemberInfoCreateRequestDTO nonMemberInfoCreateRequestDTO, String productCode);
+	ResponseEntity<NonMemberInfoReadResponseDTO> selectNonMemberInfo(NonMemberInfoReadRequestDTO nonMemberInfoReadRequestDTO);
 }

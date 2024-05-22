@@ -13,9 +13,8 @@ import lombok.ToString;
 @ToString
 public class NonMemberInfoCreateRequestDTO {
 
-	private String orderNumber;
+	private String orderNumber;	
 	
-	private Product Product;
 	private String name;
 	private String email;
 	private String email2;
