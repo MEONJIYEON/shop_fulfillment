@@ -12,4 +12,6 @@ public interface AdminDAO {
 	
 	//로그인
 	AdminLoginRequestDTO login(String id);
+	
+	//비회원 주문 정보 확인
 }

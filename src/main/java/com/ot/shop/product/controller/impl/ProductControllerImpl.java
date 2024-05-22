@@ -7,11 +7,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.ot.shop.product.controller.ProductController;
 import com.ot.shop.product.data.dto.ProductDTO;
@@ -30,12 +31,30 @@ public class ProductControllerImpl implements ProductController {
 		this.productService = productService;
 	}
 
-	@PostMapping()
-	public ResponseEntity<ProductResponseDTO> createProduct(@RequestBody ProductDTO productDto) {
-		ProductResponseDTO productResponseDto = productService.saveProduct(productDto);
-		
-		return ResponseEntity.status(HttpStatus.OK).body(productResponseDto);
-	}
+//	@PostMapping("/createProduct")
+//	public ResponseEntity<ProductResponseDTO> createProduct(@RequestBody ProductDTO productDto) {
+//		ProductResponseDTO productResponseDto = productService.saveProduct(productDto);
+//		
+//		return ResponseEntity.status(HttpStatus.OK).body(productResponseDto);
+//	}
+	
+	@PostMapping("/createProduct")
+    public ModelAndView createProduct(@ModelAttribute ProductDTO productDto) {
+        ProductResponseDTO productResponseDto = productService.saveProduct(productDto);
+     
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("productResponse", productResponseDto);
+        mav.setViewName("redirect:/api/v1/shop-fulfillment/selectAllProduct");
+        return mav;
+    }
+
+//	@PostMapping()
+//	public ResponseEntity<ProductResponseDTO> createProduct(@RequestBody ProductDTO productDto) {
+//		ProductResponseDTO productResponseDto = productService.saveProduct(productDto);
+//		
+//		return ResponseEntity.status(HttpStatus.OK).body(productResponseDto);
+//	}
+
 
 	@GetMapping()
 	public ResponseEntity<ProductResponseDTO> getProduct(Long id) {
@@ -63,11 +82,26 @@ public class ProductControllerImpl implements ProductController {
 		return ResponseEntity.status(HttpStatus.OK).body("delete");
 	}
 
+	//전체 List 가져오기
+	/*
 	@GetMapping("/getAllProducts")
 	public ResponseEntity<List<ProductResponseDTO>> getAllProducts() {
 		List<ProductResponseDTO> products = productService.findAllProduct();
 		
 		return ResponseEntity.status(HttpStatus.OK).body(products);
 	}
+	*/
+	
+	@GetMapping("/getAllProducts")
+	public ModelAndView getAllProducts() {
+	    List<ProductResponseDTO> products = productService.findAllProduct();
+	    
+	    ModelAndView mav = new ModelAndView();
+	    mav.addObject("products", products);
+	    mav.setViewName("selectAllProduct"); // 렌더링할 뷰의 이름
+	    
+	    return mav;
+	}
+
 	
 }
