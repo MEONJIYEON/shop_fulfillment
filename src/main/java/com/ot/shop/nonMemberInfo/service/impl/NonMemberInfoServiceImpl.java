@@ -22,8 +22,8 @@ public class NonMemberInfoServiceImpl implements NonMemberInfoService {
 		this.nonMemberInfoDAO = nonMemberInfoDAO;
 	}
 
-	@Override
 	public NonMemberInfoCreateResponseDTO saveNonMemberInfo(NonMemberInfoCreateRequestDTO nonMemberInfo, String productCode) {
+
 		NonMemberInfo nonInfo = NonMemberInfo.builder()
 						 .orderNumber(nonMemberInfo.getOrderNumber())
 						 .name(nonMemberInfo.getName())  // nonMemberInfo.getName()
@@ -39,12 +39,11 @@ public class NonMemberInfoServiceImpl implements NonMemberInfoService {
 			             .aggrement3(nonMemberInfo.getAggrement3())
 			             .ordercount(nonMemberInfo.getOrderCount())
 			             .create_at(LocalDateTime.now())
-			             .product(null)
 			             .build();
 	
-		
+
 		NonMemberInfo savedNonInfo = nonMemberInfoDAO.insertNonMemberInfo(nonInfo, productCode);
-		
+
 		NonMemberInfoCreateResponseDTO nonMemberInfoCreateResponseDTO = new NonMemberInfoCreateResponseDTO();
 		nonMemberInfoCreateResponseDTO.setOrderNumber(savedNonInfo.getOrderNumber());
 		
