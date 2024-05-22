@@ -10,7 +10,7 @@ public interface ProductService {
 	
 	ProductResponseDTO getProduct(Long id);
 	
-	ProductResponseDTO updateProduct(Long id, String name, String content, String image, Integer price) throws Exception;
+	ProductResponseDTO updateProduct(Long id, String name, String content,Integer stock, String image, Integer price) throws Exception;
 
 	void deleteProduct(Long id) throws Exception;
 	

@@ -7,14 +7,22 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>selectAllOrder</title>
+<title>updateProduct</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css"
 	rel="stylesheet" />
 <link href="/css/styles.css" rel="stylesheet" />
 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
-crossorigin="anonymous"></script>
+	crossorigin="anonymous"></script>
 <style>
+.td-label {
+	width: 40%;
+}
+
+.td-input {
+	width: 60%;
+}
+
 table {
 	border: 1px #a39485 solid;
 	font-size: .9em;
@@ -29,10 +37,10 @@ th {
 	text-align: left;
 }
 
-thead {
+thead, .td1 {
 	font-weight: bold;
 	color: #fff;
-	background: rgb(211, 212, 213);;
+	background: rgb(211, 212, 213);
 }
 
 td, th {
@@ -47,6 +55,12 @@ td {
 
 a {
 	color: #73685d;
+}
+
+.button-container {
+	display: flex;
+	justify-content: center;
+	gap: 10px; /* Space between buttons */
 }
 
 @media all and (max-width: 768px) {
@@ -128,7 +142,9 @@ a {
 					<div class="nav">
 						<div class="sb-sidenav-menu-heading">Core</div>
 						<a class="nav-link" href="/api/v1/shop-fulfillment/index">
-							<div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div> Dashboard
+							<div class="sb-nav-link-icon">
+								<i class="fas fa-tachometer-alt"></i>
+							</div> Dashboard
 						</a>
 						<div class="sb-sidenav-menu-heading">Management</div>
 						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
@@ -144,8 +160,10 @@ a {
 						<div class="collapse" id="collapseLayouts"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link"  th:href="@{/api/v1/shop-fulfillment/selectAllProduct}">상품 목록</a>
-								<a class="nav-link" th:href="@{/api/v1/shop-fulfillment/createProduct}">상품 등록</a>
+								<a class="nav-link"
+									th:href="@{/api/v1/shop-fulfillment/selectAllProduct}">상품
+									목록</a> <a class="nav-link"
+									th:href="@{/api/v1/shop-fulfillment/createProduct}">상품 등록</a>
 							</nav>
 						</div>
 						<a class="nav-link" href="/api/v1/shop-fulfillment/index">
@@ -161,35 +179,57 @@ a {
 			</nav>
 		</div>
 		<div id="layoutSidenav_content">
-			<main>
-				<div class="container-fluid px-4">
-					<h2 class="mt-4">주문 목록</h2>
-					<hr>
-					<table>
-						<thead>
-							<tr>
-								<th>이름</th>
-								<th>주소</th>
-								<th>주문번호</th>
-								<th>상품명</th>
-								<th>상품 가격</th>
-								<th>주문 날짜</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr th:each="order : ${orders}">
-								<td th:text="${order.name}"></td>
-								<td th:text="${order.zipcode}"></td>
-								<td th:text="${order.orderNumber}"></td>
-								<td th:text="${order.productName}"></td>
-								<td th:text="${#numbers.formatInteger(order.price, 3, 'COMMA')}"></td>
-								<td th:text="${#temporals.format(order.create_at, 'yyyy.MM.dd HH:mm')}"></td>
-						
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</main>
+				<main>
+					<div class="container-fluid px-4">
+						<h2 class="mt-4">상품 수정</h2>
+						<hr>
+						<form th:action="@{/api/v1/shop-fulfillment/updateProduct}" method="post">
+						<input type="hidden" name="id" th:value="${productResponseDto.id}">
+						<table>
+							<tbody>
+								<tr>
+									<td class="td1"><label for="image">상품 이미지</label></td>
+									<td colspan="2">
+										<input type="text" id="image" name="image" th:value="${productResponseDto.image}" />
+										<input type="button" value="이미지 선택">
+									</td>
+								</tr>
+								<tr>
+									<td class="td1"><label for="name">상품명</label></td>
+									<td><input type="text" id="name" name="name"
+										th:value="${productResponseDto.name}" style="width: 80%; height: 2.5em;" /></td>
+								</tr>
+								<tr>
+									<td class="td1"><label for="stock">상품 재고</label></td>
+									<td><input type="text" id="stock" name="stock"
+										th:value="${productResponseDto.stock}" style="width: 80%; height: 2.5em;" /></td>
+								</tr>
+								<tr>
+									<td class="td1"><label for="content">상품 내용</label></td>
+									<td colspan="2">
+										<input type="text" id="content" name="content" th:value="${productResponseDto.content}"
+										style="width: 80%; height: 2.5em;" />
+									</td>
+								</tr>
+								<tr>
+									<td class="td1"><label for="price">상품 가격</label></td>
+									<td><input type="text" id="price" name="price" th:value="${productResponseDto.price}"
+										style="width: 80%; height: 2.5em;" /></td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										<div class="button-container">
+											<button class="btn btn btn-light" type="submit" style="padding: 10px 20px;">확인</button>
+									
+											<button class="btn btn btn-light" style="padding: 15px 30px;">취소</button>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						</form>
+					</div>
+				</main>
 			<footer class="py-4 bg-light mt-auto">
 				<div class="container-fluid px-4">
 					<div

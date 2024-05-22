@@ -46,7 +46,7 @@ public class NonMemberInfoServiceImpl implements NonMemberInfoService {
 			             .aggrement3(nonMemberInfo.getAggrement3())
 			             .ordercount(nonMemberInfo.getOrderCount())
 			             .create_at(LocalDateTime.now())
-			             .Product(product)
+			             .product(product)
 			             .build();
 		
 		NonMemberInfo savedNonInfo = nonMemberInfoDAO.insertNonMemberInfo(nonInfo);
