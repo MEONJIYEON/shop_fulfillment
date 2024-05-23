@@ -1,5 +1,7 @@
 package com.ot.shop.nonMemberInfo.data.dto;
 
+import com.ot.shop.product.data.entity.Product;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,4 +25,6 @@ public class NonMemberInfoCreateResponseDTO {
 	private String zipcode;
 	
 	private int orderCount;	
+	
+	private Product product; 
 }	

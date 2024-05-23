@@ -9,7 +9,7 @@ import com.ot.shop.nonMemberInfo.data.dto.NonMemberInfoReadResponseDTO;
 
 
 public interface NonMemberInfoController {
-	ResponseEntity<NonMemberInfoCreateResponseDTO> createNonMemberInfo(NonMemberInfoCreateRequestDTO nonMemberInfoCreateRequestDTO, String productCode);
+	ResponseEntity<NonMemberInfoCreateResponseDTO> createNonMemberInfo(NonMemberInfoCreateRequestDTO nonMemberInfoCreateRequestDTO, Long id);
 	ResponseEntity<NonMemberInfoReadResponseDTO> selectNonMemberInfo(NonMemberInfoReadRequestDTO nonMemberInfoReadRequestDTO);
 
 }

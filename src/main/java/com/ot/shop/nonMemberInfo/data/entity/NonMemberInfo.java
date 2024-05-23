@@ -4,11 +4,14 @@ import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import com.ot.shop.product.data.entity.Product;
@@ -25,14 +28,19 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "S_NON_MEMBER_INFO")
+@SequenceGenerator(name = "product_seq", sequenceName = "product_seq", allocationSize = 1)
 public class NonMemberInfo {
     
-    @Id
-    @Column(length = 14, nullable = false, name="ordernumber")
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "product_seq")
+	@Column(nullable = false, unique = true)
+	private Long id;
+	
+	@Column(length = 14, nullable = false, name="ordernumber")
     private String orderNumber;
     
     @OneToOne
-    @JoinColumn(name = "productcode", referencedColumnName = "productcode")
+    @JoinColumn(name = "id", referencedColumnName = "id")
     private Product product;
     
     @Column(nullable = false)
@@ -60,13 +68,13 @@ public class NonMemberInfo {
     private String zipcode;
     
     @Column(nullable = false)
-    private char aggrement1;
+    private String aggrement1;
     
     @Column(nullable = false)
-    private char aggrement2;
+    private String aggrement2;
     
     @Column(nullable = false)
-    private char aggrement3;
+    private String aggrement3;
     
     @Column(nullable = false)
     private int ordercount;
