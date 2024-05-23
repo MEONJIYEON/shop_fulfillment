@@ -6,7 +6,9 @@ import com.ot.shop.product.data.entity.Product;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 
 @Data
@@ -31,4 +33,5 @@ public class NonMemberInfoReadResponseDTO {
 	
 	//상품정보
 	private Product product; 
+	
 }

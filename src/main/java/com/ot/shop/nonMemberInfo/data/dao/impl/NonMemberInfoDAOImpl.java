@@ -1,5 +1,7 @@
 package com.ot.shop.nonMemberInfo.data.dao.impl;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -23,9 +25,15 @@ public class NonMemberInfoDAOImpl implements NonMemberInfoDAO {
 	}
 	
 	@Override
-	public NonMemberInfo insertNonMemberInfo(NonMemberInfo nonMemberInfo, String productCode) {
-		Product product = productRepository.findByProductCode(productCode);
-		nonMemberInfo.setProduct(product);
+	public NonMemberInfo insertNonMemberInfo(NonMemberInfo nonMemberInfo, Long id) {
+//		System.out.println("NonMemberInfoDAO productCode : ==============>" + productCode);
+//		Product product = productRepository.findByProductCode(productCode);
+		Optional<Product> product = productRepository.findById(id);
+//		System.out.println("--insertNonMemberInfo : " + id);
+//		Optional<Product> product1 = productRepository.findById(1L);
+		
+		System.out.println("NonMemberInfoDAO ========>" + product);
+		//nonMemberInfo.setProduct(product);
 		
 		NonMemberInfo savedNonMemberInfo = nonMemberInfoRepository.save(nonMemberInfo);
 		

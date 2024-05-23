@@ -1,7 +1,5 @@
 package com.ot.shop.nonMemberInfo.data.dto;
 
-import com.ot.shop.product.data.entity.Product;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,9 +22,9 @@ public class NonMemberInfoCreateRequestDTO {
 	private String address;
 	private String zipcode;
 	
-	private char aggrement1;
-	private char aggrement2;
-	private char aggrement3;
+	private String aggrement1;
+	private String aggrement2;
+	private String aggrement3;
 	private int orderCount;	
 
 }

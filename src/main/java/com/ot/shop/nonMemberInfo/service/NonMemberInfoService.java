@@ -7,6 +7,7 @@ import com.ot.shop.nonMemberInfo.data.dto.NonMemberInfoReadResponseDTO;
 
 
 public interface NonMemberInfoService {
+
 	NonMemberInfoCreateResponseDTO saveNonMemberInfo(NonMemberInfoCreateRequestDTO nonMemberInfo, String productCode);
 
 	NonMemberInfoReadResponseDTO selectNonMemberInfo(NonMemberInfoReadRequestDTO nonMemberInfoReadRequestDTO);
