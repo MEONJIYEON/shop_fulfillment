@@ -2,8 +2,6 @@ package com.ot.shop.nonMemberInfo.data.dto;
 
 import java.time.LocalDateTime;
 
-import javax.persistence.Column;
-
 import com.ot.shop.product.data.entity.Product;
 
 import lombok.AllArgsConstructor;
