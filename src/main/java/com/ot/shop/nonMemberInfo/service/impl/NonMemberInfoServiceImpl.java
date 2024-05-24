@@ -123,7 +123,8 @@ public class NonMemberInfoServiceImpl implements NonMemberInfoService {
       nonMemberInfoCreateResponseDTO.setZipcode(savedNonInfo.getZipcode());
       nonMemberInfoCreateResponseDTO.setOrderCount(savedNonInfo.getOrdercount());
       nonMemberInfoCreateResponseDTO.setProduct(savedNonInfo.getProduct());
-
+      nonMemberInfoCreateResponseDTO.setCreate_at(savedNonInfo.getCreate_at());
+      
       
       return nonMemberInfoCreateResponseDTO;
    

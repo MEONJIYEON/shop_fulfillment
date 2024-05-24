@@ -101,7 +101,8 @@ footer a{
 <div class="container">
 	<header>
 		<div class="img">
-			<a href="#" onclick="location.href='index.do'"><img src="/img/icon.png" width="70px" height="70px"></a>
+			<a href="#" onclick="location.href='index.do'"><img src="/img/ful.png" width="100px" height="75px"></a>
+			<a href="#" onclick="location.href='index.do'"><img src="/img/shop.png" width="400px" height="75px"></a>
 		</div>
 		<nav>
 			<ul>
@@ -139,17 +140,17 @@ footer a{
 		</thead>
 		<!--  수정 -->
 		<tbody>
-		  	<tr th:each="slist : ${search}">	
-		    	<td th:text="${slist.orderNumber}"></td>   
-			    <td th:text="${slist.product.name }"></td>			
-			    <td th:text="${slist.orderCount }"></td>	
-			    <td th:text="${slist.product.price }"></td>	
-			    <td th:text="${slist.name }"></td>	
-			    <td th:text="${#strings.concat(slist.hp1, '-', slist.hp2, '-', slist.hp3)}"></td> 	
-			    <td th:text="${slist.name}"></td>			
-			    <td th:text="${slist.address }"></td>			
-			</tr>
-		</tbody>
+           <tr th:each="slist : ${search}">   
+             <td th:text="${slist.orderNumber}"></td>   
+             <td th:text="${slist.product.productName }"></td>         
+             <td th:text="${slist.orderCount }"></td>   
+             <td th:text="${slist.product.price }"></td>   
+             <td th:text="${slist.name }"></td>   
+             <td th:text="${#strings.concat(slist.hp1, '-', slist.hp2, '-', slist.hp3)}"></td>    
+             <td th:text="${#temporals.format(slist.create_at,'yyyy.MM.dd HH:mm')}"></td>              
+             <td th:text="${slist.address }"></td>         
+         </tr>
+
 		</tbody>
 	</table>
 	</section>
