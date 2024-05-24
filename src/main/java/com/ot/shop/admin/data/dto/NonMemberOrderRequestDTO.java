@@ -12,17 +12,29 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class NonMemberOrderRequestDTO {
-	//비회원 주문 정보 확인
-	//이름, 주소, 주문번호, 상품 이름, 상품 가격, 배송 상태, 주문 날짜
+	
+	private Integer price; 
 	
 	private String name;
+	
+	private String hp1;
+	
+	private String hp2;
+	
+	private String hp3;
+	
 	private String zipcode;
+	
+	private String address;
+	
+	private String productCode;
+
+	private String productName;
+	
 	private String orderNumber;
-	private String productName; // 상품 이름 - product.getName()
-	private Integer price; // 상품 가격 - product.getPrice()
-	//배송상태
 	
-	private LocalDateTime create_at;
-	
+    private int ordercount;
+    
+    private LocalDateTime create_at;
 	
 }

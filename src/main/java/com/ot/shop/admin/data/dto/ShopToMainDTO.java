@@ -28,10 +28,6 @@ public class ShopToMainDTO {
 
 	private String productName;
 	
-	private String orderNumber;
-	
-    private int ordercount;
-    
-    private LocalDateTime create_at;
+    private int orderCount;
 
 }

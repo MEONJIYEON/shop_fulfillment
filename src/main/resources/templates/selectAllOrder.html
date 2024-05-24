@@ -101,7 +101,16 @@ a {
 	}
 }
 </style>
+<script>
+        function handleFormSubmit(event) {
+            event.preventDefault(); // 폼 제출을 막음
+            alert("주문 내역 전송 완료");
+            document.getElementById("submitBtn").disabled = true;
+            document.getElementById("orderForm").submit(); // 폼 제출
+        }
+</script>
 </head>
+
 <body class="sb-nav-fixed">
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 		<!-- Navbar Brand-->
@@ -182,8 +191,6 @@ a {
 				<div class="container-fluid px-4">
 					<h2 class="mt-4">주문 목록</h2>
 					<hr>
-					<!--  form 수정 -->
-					<form>
 					<table>
 						<thead>
 							<tr>
@@ -205,12 +212,26 @@ a {
 								<td th:text="${#numbers.formatInteger(order.price, 3, 'COMMA')}"></td>
 								<td th:text="${#temporals.format(order.create_at, 'yyyy.MM.dd HH:mm')}"></td>
 								<td>
-								    <input type="submit" class="btn btn btn-light" style="padding: 10px 20px;" value="주문 내역 전송">
+										<form id="orderForm" th:action="@{/api/v1/shop-fulfillment/shopToMain}" method="post" onsubmit="handleFormSubmit(event)">
+											<input type="hidden" name="name" th:value="${order.name}" /> 
+											<input type="hidden" name="hp1" th:value="${order.hp1}" /> 
+											<input type="hidden" name="hp2" th:value="${order.hp2}" /> 
+											<input type="hidden" name="hp3" th:value="${order.hp3}" /> 
+											<input type="hidden" name="zipcode" th:value="${order.zipcode}" /> 
+											<input type="hidden" name="address" th:value="${order.address}" /> 
+											<input type="hidden" name="productCode" th:value="${order.productCode}" /> 
+											<input type="hidden" name="productName" th:value="${order.productName}" /> 
+											<input type="hidden" name="orderNumber" th:value="${order.orderNumber}" /> 
+											<input type="hidden" name="orderCount" th:value="${order.ordercount}" /> 
+											<input type="hidden" name="create_at" th:value="${order.create_at}" /> 
+											<input type="submit" id="submitBtn" class="btn btn btn-light" style="padding: 10px 20px;" value="주문 내역 전송">
+										</form>
 								</td>
 							</tr>
 						</tbody>
+						
 					</table>
-					</form>
+					
 				</div>
 			</main>
 			<footer class="py-4 bg-light mt-auto">

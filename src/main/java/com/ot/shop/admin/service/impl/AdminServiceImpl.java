@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -58,13 +57,36 @@ public class AdminServiceImpl implements AdminService {
 //			requestDto.setCreate_at(order.getCreate_at());
 
 			NonMemberOrderRequestDTO orderRequestDto = new NonMemberOrderRequestDTO();
+			/*
+			 * orderRequestDto.setName(order.getName());
+			 * orderRequestDto.setZipcode(order.getZipcode());
+			 * orderRequestDto.setOrderNumber(order.getOrderNumber());
+			 * orderRequestDto.setProductName(order.getProduct().getName());
+			 * orderRequestDto.setPrice(order.getProduct().getPrice());
+			 * orderRequestDto.setCreate_at(order.getCreate_at());
+			 * orderRequestDto.setHp1(order.getHp1());
+			 * orderRequestDto.setHp2(order.getHp2());
+			 * orderRequestDto.setHp3(order.getHp3());
+			 * orderRequestDto.setAddress(order.getAddress());
+			 * orderRequestDto.setProductCode(order.getProduct().getProductCode());
+			 * orderRequestDto.setOrdercount(order.getOrdercount());
+			 */
+			
+			
+			
 			orderRequestDto.setName(order.getName());
 			orderRequestDto.setZipcode(order.getZipcode());
 			orderRequestDto.setOrderNumber(order.getOrderNumber());
-			orderRequestDto.setProductName(order.getProduct().getName());
+			orderRequestDto.setProductName(order.getProduct().getProductName());
 			orderRequestDto.setPrice(order.getProduct().getPrice());
 			orderRequestDto.setCreate_at(order.getCreate_at());
-
+			orderRequestDto.setHp1(order.getHp1());
+			orderRequestDto.setHp2(order.getHp2());
+			orderRequestDto.setHp3(order.getHp3());
+			orderRequestDto.setAddress(order.getAddress());
+			orderRequestDto.setProductCode(order.getProduct().getProductCode());
+			orderRequestDto.setOrdercount(order.getOrdercount());
+			
 			
 			requestDtoList.add(orderRequestDto);
 		}
@@ -78,34 +100,34 @@ public class AdminServiceImpl implements AdminService {
 	}
 	
 	@Override
-	public ResponseEntity<ShopToMainResponseDTO> shopToMain(ShopToMainDTO shopToMainDTO) {
-		WebClient webClient = WebClient.builder()
+	public void shopToMain(ShopToMainDTO shopToMainDTO) {
+	    WebClient webClient = WebClient.builder()
 	            .baseUrl("http://localhost:9001")
 	            .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
 	            .build();
 
-		System.out.println(shopToMainDTO);
-		
-		ShopToMainResponseDTO shopToMainResponseDTO = new ShopToMainResponseDTO();
-		shopToMainResponseDTO.setName(shopToMainDTO.getName());
-		shopToMainResponseDTO.setHp1(shopToMainDTO.getHp1());
-		shopToMainResponseDTO.setHp2(shopToMainDTO.getHp2());
-		shopToMainResponseDTO.setHp3(shopToMainDTO.getHp3());
-		shopToMainResponseDTO.setCreate_at(shopToMainDTO.getCreate_at());
-		shopToMainResponseDTO.setZipcode(shopToMainDTO.getZipcode());
-		shopToMainResponseDTO.setAddress(shopToMainDTO.getAddress());
-		shopToMainResponseDTO.setOrderNumber(shopToMainDTO.getOrderNumber());
-		shopToMainResponseDTO.setOrdercount(shopToMainDTO.getOrdercount());
+	    System.out.println(shopToMainDTO);
 
-		shopToMainResponseDTO.setProductName(shopToMainDTO.getName());
-		shopToMainResponseDTO.setProductCode(shopToMainDTO.getProductCode());
+	    ShopToMainResponseDTO shopToMainResponseDTO = new ShopToMainResponseDTO();
+	    shopToMainResponseDTO.setUserName(shopToMainDTO.getName());
+	    shopToMainResponseDTO.setHp1(shopToMainDTO.getHp1());
+	    shopToMainResponseDTO.setHp2(shopToMainDTO.getHp2());
+	    shopToMainResponseDTO.setHp3(shopToMainDTO.getHp3());
+	    shopToMainResponseDTO.setZipcode(shopToMainDTO.getZipcode());
+	    shopToMainResponseDTO.setAddress(shopToMainDTO.getAddress());
+	    shopToMainResponseDTO.setOrderCount(shopToMainDTO.getOrderCount());
+	    shopToMainResponseDTO.setProductName(shopToMainDTO.getName());
+	    shopToMainResponseDTO.setProductCode(shopToMainDTO.getProductCode());
 
-	    return webClient.post()
+	    webClient.post()
 	            .uri("/api/v1/main-fulfillment/productManagement/shopToMain")
 	            .bodyValue(shopToMainResponseDTO)
 	            .retrieve()
 	            .toEntity(ShopToMainResponseDTO.class)
 	            .block();
+	    
+
 	}
+
 
 }

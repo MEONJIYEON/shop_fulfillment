@@ -198,7 +198,9 @@ a {
 						<tbody>
 							<tr th:each="product : ${products}">
 								<td th:text="${product.productCode}"></td>
-								<td th:text="${product.image}"></td>
+								<td>	
+									<img src="/img/monitor2.jpg" alt="Product Image" class="product-image" width="150px;" height="150px;">
+								</td>
 								<td th:text="${product.name}"></td>
 								<td th:text="${#numbers.formatInteger(product.price, 3, 'COMMA')}"></td>
 								<td th:text="${product.stock}"></td>

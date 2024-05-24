@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,7 +47,7 @@ public class AdminControllerImpl implements AdminController {
 	@GetMapping("/selectAllOrder")
 	public ModelAndView selectAllOrder() {
 		List<NonMemberOrderRequestDTO> orders = adminService.findAllOrder();
-
+		System.out.println("------------------ orders : =>" + orders);
 		ModelAndView mav = new ModelAndView("selectAllOrder");
 		mav.addObject("orders", orders);
 
@@ -136,11 +137,15 @@ public class AdminControllerImpl implements AdminController {
 	
 	// WebClient 통신 쇼핑 -> 메인 (요청)  
 	@PostMapping("/shopToMain")
-	public ResponseEntity<ShopToMainResponseDTO> shopToMain(@RequestBody ShopToMainDTO shopToMainDTO){
+	public ModelAndView shopToMain(@ModelAttribute ShopToMainDTO shopToMainDTO){
 		System.out.println("==============================================");
 		System.out.println(shopToMainDTO);
 		System.out.println("==============================================");
-		return adminService.shopToMain(shopToMainDTO);
+		adminService.shopToMain(shopToMainDTO);
+
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("redirect:/api/v1/shop-fulfillment/selectAllOrder");
+		return modelAndView; 
 	}
 
 

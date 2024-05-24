@@ -13,6 +13,6 @@ public interface AdminService {
 
 	List<NonMemberOrderRequestDTO> findAllOrder();
 	AdminLoginRequestDTO login(String id);
-	ResponseEntity<ShopToMainResponseDTO> shopToMain(ShopToMainDTO shopToMainDTO);
+	void shopToMain(ShopToMainDTO shopToMainDTO);
 
 }
