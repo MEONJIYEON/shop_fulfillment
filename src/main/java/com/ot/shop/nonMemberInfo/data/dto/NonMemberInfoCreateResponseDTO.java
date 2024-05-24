@@ -1,5 +1,7 @@
 package com.ot.shop.nonMemberInfo.data.dto;
 
+import java.time.LocalDateTime;
+
 import com.ot.shop.product.data.entity.Product;
 
 import lombok.AllArgsConstructor;
@@ -24,4 +26,6 @@ public class NonMemberInfoCreateResponseDTO {
 	private int orderCount;	
 	
 	private Product product; 
+	private LocalDateTime create_at;
+
 }	
