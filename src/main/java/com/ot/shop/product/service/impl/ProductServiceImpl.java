@@ -46,7 +46,7 @@ public class ProductServiceImpl implements ProductService {
 				.id(nextId)
 			    .productCode("MON-" + nextId)
 			    .stock(productDto.getStock())
-			    .name(productDto.getName())
+			    .productName(productDto.getName())
 			    .price(productDto.getPrice())
 			    .content(productDto.getContent())
 			    .image(productDto.getImage())
@@ -55,7 +55,7 @@ public class ProductServiceImpl implements ProductService {
 		
 		product.setProductCode(productDto.getProductCode());
 		product.setStock(productDto.getStock());
-		product.setName(productDto.getName());
+		product.setProductName(productDto.getName());
 		product.setPrice(productDto.getPrice());
 		product.setContent(productDto.getContent());
 		product.setImage(productDto.getImage());
@@ -78,7 +78,7 @@ public class ProductServiceImpl implements ProductService {
 		productResponseDto.setId(savedProduct.getId());
 		productResponseDto.setProductCode(savedProduct.getProductCode());
 		productResponseDto.setStock(savedProduct.getStock());
-		productResponseDto.setName(savedProduct.getName());
+		productResponseDto.setName(savedProduct.getProductName());
 		productResponseDto.setPrice(savedProduct.getPrice());
 		productResponseDto.setContent(savedProduct.getContent());
 		productResponseDto.setImage(savedProduct.getImage());
@@ -95,7 +95,7 @@ public class ProductServiceImpl implements ProductService {
 		productResponseDto.setId(product.getId());
 		productResponseDto.setProductCode(product.getProductCode());
 		productResponseDto.setStock(product.getStock());
-		productResponseDto.setName(product.getName());
+		productResponseDto.setName(product.getProductName());
 		productResponseDto.setPrice(product.getPrice());
 		productResponseDto.setContent(product.getContent());
 		productResponseDto.setImage(product.getImage());
@@ -112,7 +112,7 @@ public class ProductServiceImpl implements ProductService {
 		ProductResponseDTO productResponseDto = new ProductResponseDTO();
 		
 		productResponseDto.setId(changedProduct.getId());
-		productResponseDto.setName(changedProduct.getName());
+		productResponseDto.setName(changedProduct.getProductName());
 		productResponseDto.setContent(changedProduct.getContent());
 		productResponseDto.setImage(changedProduct.getImage());
 		productResponseDto.setPrice(changedProduct.getPrice());
@@ -137,7 +137,7 @@ public class ProductServiceImpl implements ProductService {
 		        responseDto.setId(product.getId());
 		        responseDto.setProductCode(product.getProductCode());
 		        responseDto.setStock(product.getStock());
-		        responseDto.setName(product.getName());
+		        responseDto.setName(product.getProductName());
 		        responseDto.setPrice(product.getPrice());
 		        responseDto.setContent(product.getContent());
 		        responseDto.setImage(product.getImage());

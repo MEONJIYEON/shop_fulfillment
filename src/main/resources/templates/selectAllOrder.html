@@ -15,6 +15,23 @@
 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
 crossorigin="anonymous"></script>
 <style>
+@import url('https://cdn.jsdelivr.net/font-iropke-batang/1.2/font-iropke-batang.css');
+
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+.font {
+	font-family: 'Pretendard-Regular';
+}
+
+body {
+	font-family: 'Pretendard-Regular';
+}
+
 table {
 	border: 1px #a39485 solid;
 	font-size: .9em;
@@ -84,7 +101,16 @@ a {
 	}
 }
 </style>
+<script>
+        function handleFormSubmit(event) {
+            event.preventDefault(); // 폼 제출을 막음
+            alert("주문 내역 전송 완료");
+            document.getElementById("submitBtn").disabled = true;
+            document.getElementById("orderForm").submit(); // 폼 제출
+        }
+</script>
 </head>
+
 <body class="sb-nav-fixed">
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 		<!-- Navbar Brand-->
@@ -174,6 +200,7 @@ a {
 								<th>상품명</th>
 								<th>상품 가격</th>
 								<th>주문 날짜</th>
+								<th>주문 내역 전송</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -184,10 +211,27 @@ a {
 								<td th:text="${order.productName}"></td>
 								<td th:text="${#numbers.formatInteger(order.price, 3, 'COMMA')}"></td>
 								<td th:text="${#temporals.format(order.create_at, 'yyyy.MM.dd HH:mm')}"></td>
-						
+								<td>
+										<form id="orderForm" th:action="@{/api/v1/shop-fulfillment/shopToMain}" method="post" onsubmit="handleFormSubmit(event)">
+											<input type="hidden" name="name" th:value="${order.name}" /> 
+											<input type="hidden" name="hp1" th:value="${order.hp1}" /> 
+											<input type="hidden" name="hp2" th:value="${order.hp2}" /> 
+											<input type="hidden" name="hp3" th:value="${order.hp3}" /> 
+											<input type="hidden" name="zipcode" th:value="${order.zipcode}" /> 
+											<input type="hidden" name="address" th:value="${order.address}" /> 
+											<input type="hidden" name="productCode" th:value="${order.productCode}" /> 
+											<input type="hidden" name="productName" th:value="${order.productName}" /> 
+											<input type="hidden" name="orderNumber" th:value="${order.orderNumber}" /> 
+											<input type="hidden" name="orderCount" th:value="${order.ordercount}" /> 
+											<input type="hidden" name="create_at" th:value="${order.create_at}" /> 
+											<input type="submit" id="submitBtn" class="btn btn btn-light" style="padding: 10px 20px;" value="주문 내역 전송">
+										</form>
+								</td>
 							</tr>
 						</tbody>
+						
 					</table>
+					
 				</div>
 			</main>
 			<footer class="py-4 bg-light mt-auto">

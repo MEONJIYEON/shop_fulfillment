@@ -51,8 +51,8 @@ public class Product implements Serializable {
 	@Column(nullable = false)
 	private Integer stock;
 	
-	@Column(nullable = false)
-	private String name;
+	@Column(nullable = false, name="productname")
+	private String productName;
 	
 	@Column(nullable = false)
 	private Integer price;

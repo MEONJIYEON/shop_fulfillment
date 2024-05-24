@@ -15,6 +15,23 @@
 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
 crossorigin="anonymous"></script>
 <style>
+@import url('https://cdn.jsdelivr.net/font-iropke-batang/1.2/font-iropke-batang.css');
+
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+.font {
+	font-family: 'Pretendard-Regular';
+}
+
+body {
+	font-family: 'Pretendard-Regular';
+}
+
 table {
 	border: 1px #a39485 solid;
 	font-size: .9em;
@@ -181,7 +198,9 @@ a {
 						<tbody>
 							<tr th:each="product : ${products}">
 								<td th:text="${product.productCode}"></td>
-								<td th:text="${product.image}"></td>
+								<td>	
+									<img src="/img/monitor2.jpg" alt="Product Image" class="product-image" width="150px;" height="150px;">
+								</td>
 								<td th:text="${product.name}"></td>
 								<td th:text="${#numbers.formatInteger(product.price, 3, 'COMMA')}"></td>
 								<td th:text="${product.stock}"></td>

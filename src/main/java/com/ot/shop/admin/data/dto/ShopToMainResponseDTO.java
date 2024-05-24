@@ -8,14 +8,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class NonMemberOrderRequestDTO {
-	
-	private Integer price; 
-	
-	private String name;
+@Builder
+public class ShopToMainResponseDTO {
+	private String userName;
 	
 	private String hp1;
 	
@@ -30,11 +27,7 @@ public class NonMemberOrderRequestDTO {
 	private String productCode;
 
 	private String productName;
-	
-	private String orderNumber;
-	
-    private int ordercount;
+
+	private int orderCount;
     
-    private LocalDateTime create_at;
-	
 }

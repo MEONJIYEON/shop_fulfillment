@@ -3,8 +3,12 @@ package com.ot.shop.admin.controller.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,7 +16,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ot.shop.admin.controller.AdminController;
 import com.ot.shop.admin.data.dto.AdminLoginRequestDTO;
+import com.ot.shop.admin.data.dto.MainToShopDTO;
 import com.ot.shop.admin.data.dto.NonMemberOrderRequestDTO;
+import com.ot.shop.admin.data.dto.ShopToMainDTO;
+import com.ot.shop.admin.data.dto.ShopToMainResponseDTO;
 import com.ot.shop.admin.service.AdminService;
 import com.ot.shop.product.data.dto.ProductResponseDTO;
 import com.ot.shop.product.service.ProductService;
@@ -40,7 +47,7 @@ public class AdminControllerImpl implements AdminController {
 	@GetMapping("/selectAllOrder")
 	public ModelAndView selectAllOrder() {
 		List<NonMemberOrderRequestDTO> orders = adminService.findAllOrder();
-
+		System.out.println("------------------ orders : =>" + orders);
 		ModelAndView mav = new ModelAndView("selectAllOrder");
 		mav.addObject("orders", orders);
 
@@ -127,5 +134,27 @@ public class AdminControllerImpl implements AdminController {
 		mav.addObject("products", products);
 		return mav;
 	}
+	
+	// WebClient 통신 쇼핑 -> 메인 (요청)  
+	@PostMapping("/shopToMain")
+	public ModelAndView shopToMain(@ModelAttribute ShopToMainDTO shopToMainDTO){
+		System.out.println("==============================================");
+		System.out.println(shopToMainDTO);
+		System.out.println("==============================================");
+		adminService.shopToMain(shopToMainDTO);
+
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("redirect:/api/v1/shop-fulfillment/selectAllOrder");
+		return modelAndView; 
+	}
+
+
+	// WebClient 통신 쇼핑 -> 메인 (응답)
+	@PostMapping("/mainToShop")
+	public ResponseEntity<MainToShopDTO> mainToShop(@RequestBody MainToShopDTO mainToShopDTO){
+		System.out.println(mainToShopDTO);
+		return ResponseEntity.status(HttpStatus.OK).body(mainToShopDTO);
+	}
+
 
 }
