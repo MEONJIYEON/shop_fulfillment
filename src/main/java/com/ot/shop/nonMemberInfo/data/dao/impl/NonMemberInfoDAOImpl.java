@@ -1,7 +1,5 @@
 package com.ot.shop.nonMemberInfo.data.dao.impl;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -25,15 +23,9 @@ public class NonMemberInfoDAOImpl implements NonMemberInfoDAO {
 	}
 	
 	@Override
-	public NonMemberInfo insertNonMemberInfo(NonMemberInfo nonMemberInfo, Long id) {
-//		System.out.println("NonMemberInfoDAO productCode : ==============>" + productCode);
-//		Product product = productRepository.findByProductCode(productCode);
-		Optional<Product> product = productRepository.findById(id);
-//		System.out.println("--insertNonMemberInfo : " + id);
-//		Optional<Product> product1 = productRepository.findById(1L);
-		
-		System.out.println("NonMemberInfoDAO ========>" + product);
-		//nonMemberInfo.setProduct(product);
+	public NonMemberInfo insertNonMemberInfo(NonMemberInfo nonMemberInfo, String productCode) {
+		Product product = productRepository.findByProductCode(productCode);		
+		nonMemberInfo.setProduct(product);
 		
 		NonMemberInfo savedNonMemberInfo = nonMemberInfoRepository.save(nonMemberInfo);
 		
@@ -45,41 +37,5 @@ public class NonMemberInfoDAOImpl implements NonMemberInfoDAO {
 		return nonMemberInfoRepository.findByOrderNumberAndName(orderNumber, name);
 	}
 
-	
-	
-	
-	
-//	@Override
-//	public NonMemberInfo updateNonMemberInfo(NonMemberInfo nonMemberInfo) throws Exception {
-//		Optional<NonMemberInfo> selectedNonMemberInfo = nonMemberInfoRepository.findById(nonMemberInfo.getOrderNumber());
-//		
-//		NonMemberInfo updatedNonMemberInfo;
-//		
-//		if(selectedNonMemberInfo.isPresent()) {
-//			
-//			NonMemberInfo requestNonMemberInfo = selectedNonMemberInfo.get();
-//			
-//			requestNonMemberInfo.setName(nonMemberInfo.getName());
-//			requestNonMemberInfo.setEmail(nonMemberInfo.getEmail());
-//			requestNonMemberInfo.setEmail2(nonMemberInfo.getEmail2());
-//			requestNonMemberInfo.setHp1(nonMemberInfo.getHp1());
-//			requestNonMemberInfo.setHp2(nonMemberInfo.getHp2());
-//			requestNonMemberInfo.setHp3(nonMemberInfo.getHp3());
-//			requestNonMemberInfo.setAddress(nonMemberInfo.getAddress());
-//			requestNonMemberInfo.setZipcode(nonMemberInfo.getZipcode());
-//			requestNonMemberInfo.setAggrement1(nonMemberInfo.getAggrement1());
-//			requestNonMemberInfo.setAggrement2(nonMemberInfo.getAggrement2());
-//			requestNonMemberInfo.setAggrement3(nonMemberInfo.getAggrement3());
-//			requestNonMemberInfo.setOrdercount(nonMemberInfo.getOrdercount());
-//			requestNonMemberInfo.setUpdated_at(nonMemberInfo.getUpdated_at());
-//			
-//			updatedNonMemberInfo = nonMemberInfoRepository.save(requestNonMemberInfo);
-//		
-//		} else {
-//			updatedNonMemberInfo = new NonMemberInfo();
-//		}
-//		
-//		return updatedNonMemberInfo;
-//	}
 	
 }

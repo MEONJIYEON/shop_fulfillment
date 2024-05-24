@@ -1,0 +1,109 @@
+@charset "UTF-8";
+@import url('https://cdn.jsdelivr.net/font-iropke-batang/1.2/font-iropke-batang.css');
+
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+* {
+	font-family: 'Pretendard-Regular';
+	margin: 0px;
+	padding:0px;
+    box-sizing: border-box;
+}
+
+h2 {
+	width:1420px;
+	margin:25px 0 0px 0;
+    font-size: 28pt;
+   	text-align:center;
+   	border-bottom:4px;
+}
+
+div.btn_group {
+	position:absolute;
+	left:900px;
+	top:130px;
+}
+
+.button1 {
+	width:150px;
+	border-radius:5px;
+	height:30px;
+}
+
+.button2 {
+	width:150px;
+	border-radius:5px;
+	margin-left:3px;
+	height:30px;
+}
+
+.btn_group button{
+	border:1px solid #342f82;
+	background-color:#342f82;
+	color:white;
+	padding:5px;
+}
+
+.button {
+	width:50px;
+	border-radius:5px;
+}
+
+.btn_group1 button{
+	border:1px solid darkgray;
+	background-color:rgba(0,0,0,0);
+	color:darkgray;
+	padding:5px;
+}
+
+.btn_group1 button:hover{
+	color:white;
+	background-color:#342f82;
+}
+
+table.res_table {
+  border-collapse: separate;
+  border-spacing: 1px;
+  text-align: center;
+  line-height: 1.5;
+  margin: 20px 10px;
+  position:absolute;
+  top:150px;
+  left:76px;
+}
+
+table.res_table th {
+  width: 155px;
+  padding: 10px;
+  font-weight: bold;
+  vertical-align: top;
+  color: #fff;
+  background: darkgray ;
+}
+
+table.res_table td {
+  width: 155px;
+  padding: 10px;
+  vertical-align: top;
+  border-bottom: 1px solid #ccc;
+  background: #eee;
+}
+
+#submit {
+	position:absolute;
+	left:500px;
+	bottom:80px;
+	margin-top:20px;
+	padding: 6px 12px;
+	font-size:14px;
+	color:black;
+	width:420px;
+	height:50px;
+	border:2px solid #ddd;
+	background-color:white;
+}

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>비회원 주문 조회 페이지</title>
+<link rel="stylesheet" href="/css/purSearch.css" >
+<script src="https://kit.fontawesome.com/524197c221.js">
+</script>
+<style>
+
+@charset "UTF-8";
+@import url('https://cdn.jsdelivr.net/font-iropke-batang/1.2/font-iropke-batang.css');
+
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+* {
+	margin:0;
+	padding:0;
+	color:#000;
+	box-sizing: border-box;
+}
+
+.container {
+	width:1440px;
+	margin:0 auto;
+}
+.name {
+	font-family: 'Pretendard-Regular';
+}
+ul {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+	outline: none;
+}
+
+header {
+	width:100%;
+	height:80px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.img {
+	margin-top:0px;
+	margin-left:20px;
+}
+
+nav {
+	width:600px;
+	height:100%;
+}
+
+ul {
+	width:100%;
+	height: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+
+li {
+	font-size:20px;
+	height: 100%;
+	display: flex;
+	align-items: center;
+}
+
+.btn1 {
+	margin-left:4px;
+	padding:4px;
+  	width:60px;
+  	height:30%;
+  	background-color:white;
+  	border: 1px solid lightgray;
+}
+
+footer {
+	width:100%;
+	height:110px;
+	padding-top:8px;
+	margin-top:10px;
+	font-size:12px;
+}
+
+footer a{
+	display:inline-block;
+	margin: 0 20px 0 20px;
+	font-family: 'Pretendard-Regular';
+	font-size:12px;
+}
+
+</style>
+</head>
+<body>
+<div class="container">
+	<header>
+		<div class="img">
+			<a href="#" onclick="location.href='index.do'"><img src="/img/icon.png" width="70px" height="70px"></a>
+		</div>
+		<nav>
+			<ul>
+				<li><a href="">Introduce</a></li>
+				<li><a href="">Purchase</a></li>
+				<li><a href="@{/api/v1/shop-fulfillment/purSearch}">Inquiry</a></li>
+				<li class="name">
+				<button class="btn1" value="Login">Login</button>
+				</li>
+			</ul>
+		</nav>
+	</header>
+</div>
+<hr>
+<form th:action="@{/api/v1/shop-fulfillment/purSearchList}" method="post">
+<div class="container3">
+	<section>
+	<div class="top">
+		<h2 class="reservation">주문 조회</h2>
+	</div>
+	</section>
+
+	<div class="bottom">
+	<!-- name 수정하기 -->
+		<div class="search">
+			<ul>
+				<li>주문번호</li>
+				<li><input id="input" type="text" name="orderNumber" style="height: 35px;"></li>
+			</ul>
+			<br>
+			
+			<ul>
+				<li>이름</li>
+				<li><input id="input" type="text" name="name" style="height: 35px;"></li>
+			</ul>
+			<br>
+		</div>
+	</div>
+	<div class="submit">
+		<input type="submit" value="주문 조회하기" id="submit" >
+	</div>
+</div>
+</form>
+</body>
+</html>
