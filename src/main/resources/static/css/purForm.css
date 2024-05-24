@@ -1,0 +1,93 @@
+@charset "UTF-8";
+@import url('https://cdn.jsdelivr.net/font-iropke-batang/1.2/font-iropke-batang.css');
+
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+* {
+	font-family: 'Pretendard-Regular';
+	margin: 0px;
+	padding:0px;
+    box-sizing: border-box;
+}
+
+ul {
+	margin:0px;
+	padding:0px;
+	list-style:none;
+}
+
+li{
+	margin:0px;
+	padding:0px;
+	list-style:none;
+}
+
+input {
+	border:1px solid;
+}
+
+h2 {
+	width:100%;
+	margin:25px 0 0px 0;
+    font-size: 28pt;
+   	text-align:center;
+   	border-bottom:4px;
+}
+
+h3 {
+    width: 100%;
+    font-size: 20pt;
+ 	margin-top:0px;
+ 	margin-bottom:10px;
+}
+
+
+._design1 {
+	position:absolute;
+	top:80px;
+	left:450px;
+}
+
+._design1 ul {
+	width:100%;
+	height:45px;
+	margin-top:16px;
+}
+
+._design1 li:first-child {
+	width:100px;
+}
+
+#input {
+	width:200px;
+	height:40px;
+	margin-left:40px;
+}
+
+#count {
+	margin-left:20px;
+}
+
+#submit {
+	position:absolute;
+	left:500px;
+	bottom:80px;
+	margin-top:20px;
+	padding: 6px 12px;
+	font-size:14px;
+	color:black;
+	width:420px;
+	height:50px;
+	border:2px solid #ddd;
+	background-color:white;
+}
+
+.emf {
+	width: calc(33.33% - 20px);
+}
+

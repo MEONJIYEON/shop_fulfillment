@@ -32,15 +32,11 @@ import lombok.NoArgsConstructor;
 public class NonMemberInfo {
     
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "product_seq")
-	@Column(nullable = false, unique = true)
-	private Long id;
-	
 	@Column(length = 14, nullable = false, name="ordernumber")
     private String orderNumber;
     
     @OneToOne
-    @JoinColumn(name = "id", referencedColumnName = "id")
+    @JoinColumn(name = "productcode", referencedColumnName = "productcode")
     private Product product;
     
     @Column(nullable = false)

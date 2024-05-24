@@ -15,10 +15,7 @@ public class NonMemberInfoCreateRequestDTO {
 	
 	private String name;
 	private String email;
-	private String email2;
-	private String hp1;
-	private String hp2;
-	private String hp3;
+	private String hp;
 	private String address;
 	private String zipcode;
 	
