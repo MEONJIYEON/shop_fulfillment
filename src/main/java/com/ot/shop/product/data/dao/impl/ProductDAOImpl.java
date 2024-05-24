@@ -41,7 +41,7 @@ public class ProductDAOImpl implements ProductDAO {
 			Product product = selectedProduct.get();
 			System.out.println("---"  + product);
 			product.setId(id);
-			product.setName(name);
+			product.setProductName(name);
 			product.setContent(content);
 			product.setStock(stock);
 			product.setImage(image);
